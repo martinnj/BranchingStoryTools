@@ -50,6 +50,7 @@ namespace BranchingStoryReader
             {
                 story = Parser.LoadStory(dialog.FileName);
             }
+            MessageBox.Show("Done.");
         }
     }
 }

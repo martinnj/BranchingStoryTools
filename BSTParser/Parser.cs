@@ -17,6 +17,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+using System.Globalization;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Xml;
@@ -110,6 +111,44 @@ namespace BSTParser
             for (var i = 0; i < branches.Count; i++)
             {
                 // Parse each branch.
+                var branch = new Branch();
+                var branchNode = branches.Item(i);
+                if (branchNode == null) continue;
+
+                // Parse images
+                var imgs = branchNode.SelectNodes("img");
+                if (imgs != null)
+                {
+                    for (var j = 0; j < imgs.Count; j++)
+                    {
+                        var xmlNode = imgs.Item(j);
+                        if (xmlNode == null) continue;
+                        if (xmlNode.Attributes != null)
+                            branch.AddImage(xmlNode.Attributes.GetNamedItem("file").InnerText,
+                                xmlNode.InnerText);
+                    }
+                }
+
+                // Parse text
+                var text = branchNode.SelectSingleNode("text");
+                if (text != null) branch.Text = text.InnerText;
+
+                // Parse choices
+                var choices = branchNode.SelectNodes("choice");
+                if (choices != null)
+                {
+                    for (var j = 0; j < choices.Count; j++)
+                    {
+                        var choice = choices.Item(j);
+                        if (choice == null) continue;
+                        if (choice.Attributes != null)
+                            branch.AddChoice(choice.InnerText,
+                                choice.Attributes.GetNamedItem("target").InnerText);
+                    }
+                }
+
+                // Add it to the story.
+                if (branchNode.Attributes != null) story.Branches.Add(branchNode.Attributes.GetNamedItem("id"),branch);
             }
             return story;
         }
