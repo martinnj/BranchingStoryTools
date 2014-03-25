@@ -22,14 +22,14 @@
     <vars>
         <var id="MainChar">Donatello</var>
         <var id="SideChar">Michaelangelo</var>
-        <var id="Town">Ancient China</var>
+        <var id="Place">Ancient China</var>
     </vars>
 
     
     <story title="Turtles in China">
         <img file="img/wall.jpg">The great wall of China.</img>
         <text>
-            The two turtles went for a walk in %Town. Suddenly %SideChar wanted
+            The two turtles went for a walk in %Place. Suddenly %SideChar wanted
             a pizza.
         </text>
         <choice branch="nopizza">Hell no!</choice>
