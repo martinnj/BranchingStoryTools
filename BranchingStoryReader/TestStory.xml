@@ -32,8 +32,8 @@
             The two turtles went for a walk in %Place. Suddenly %SideChar wanted
             a pizza.
         </text>
-        <choice branch="nopizza">Hell no!</choice>
-        <choice branch="muchpizza">Great idea!</choice>
+        <choice target="nopizza">Hell no!</choice>
+        <choice target="muchpizza">Great idea!</choice>
     </story>
 
     <branch id="nopizza">
