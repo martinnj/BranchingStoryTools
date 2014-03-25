@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Example XML story file for use with BST software. :)
+
+    Copyright (C) 2014  Martin Jørgensen, http://flanker.dk
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program; if not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+<forest>
+    <vars>
+        <var name="MainChar" default="Donatello" />
+        <var name="SideChar" default="Michaelangelo" />
+        <var name="Town" default="Ancient China" />
+    </vars>
+
+    
+    <story title="Turtles in China">
+        <img file="img/wall.jpg" />
+        <text>
+            The two turtles went for a walk in %Town. Suddenly %SideChar wanted
+            a pizza.
+        </text>
+        <choice text="Hell no!" branch="nopizza" />
+        <choice text="Great idea!" branch="muchpizza" />
+    </story>
+
+    <branch id="nopizza">
+        <img file="img/sadturtle.jpg" />
+        <text>
+            %MainChar slapped %SideChar and asked him to focus on the mission at hand.
+            It would be hard enough without them waddling around full of pizza.
+        </text>
+        <choice text="Lets go!" target="segway"/>
+    </branch>
+
+    <branch id="muchpizza">
+        <img file="img/happyturtle.jpg" />
+        <img file="img/deliciuspizza.jpg" />
+        <text>
+            Agreeing, %MainChar sniffed up the closest pizza joint and set about eating with his friend.
+        </text>
+        <choice text="Now lets go!" target="segway"/>
+    </branch>
+
+    <branch id="segway">
+        <text>
+            Arriving at the fortress, the two turtles decided to take a sneaky approach..
+        </text>
+    </branch>
+</forest>
