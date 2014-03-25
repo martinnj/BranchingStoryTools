@@ -29,17 +29,24 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.loadXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadNewXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startOverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.respawnImageWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeVariablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loadXMLToolStripMenuItem,
-            this.reloadToolStripMenuItem,
+            this.loadNewXMLToolStripMenuItem,
+            this.startOverToolStripMenuItem,
+            this.respawnImageWindowToolStripMenuItem,
             this.changeVariablesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -47,35 +54,73 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // loadXMLToolStripMenuItem
+            // loadNewXMLToolStripMenuItem
             // 
-            this.loadXMLToolStripMenuItem.Name = "loadXMLToolStripMenuItem";
-            this.loadXMLToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
-            this.loadXMLToolStripMenuItem.Text = "Load XML";
+            this.loadNewXMLToolStripMenuItem.Name = "loadNewXMLToolStripMenuItem";
+            this.loadNewXMLToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
+            this.loadNewXMLToolStripMenuItem.Text = "Load New XML";
             // 
-            // reloadToolStripMenuItem
+            // startOverToolStripMenuItem
             // 
-            this.reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            this.reloadToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.reloadToolStripMenuItem.Text = "Reload";
+            this.startOverToolStripMenuItem.Enabled = false;
+            this.startOverToolStripMenuItem.Name = "startOverToolStripMenuItem";
+            this.startOverToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.startOverToolStripMenuItem.Text = "Start Over";
+            // 
+            // respawnImageWindowToolStripMenuItem
+            // 
+            this.respawnImageWindowToolStripMenuItem.Enabled = false;
+            this.respawnImageWindowToolStripMenuItem.Name = "respawnImageWindowToolStripMenuItem";
+            this.respawnImageWindowToolStripMenuItem.Size = new System.Drawing.Size(146, 20);
+            this.respawnImageWindowToolStripMenuItem.Text = "Respawn ImageWindow";
             // 
             // changeVariablesToolStripMenuItem
             // 
+            this.changeVariablesToolStripMenuItem.Enabled = false;
             this.changeVariablesToolStripMenuItem.Name = "changeVariablesToolStripMenuItem";
             this.changeVariablesToolStripMenuItem.Size = new System.Drawing.Size(110, 20);
             this.changeVariablesToolStripMenuItem.Text = "Change Variables";
             // 
-            // Form1
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.richTextBox1);
+            this.splitContainer1.Size = new System.Drawing.Size(937, 551);
+            this.splitContainer1.SplitterDistance = 471;
+            this.splitContainer1.TabIndex = 1;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.richTextBox1.Size = new System.Drawing.Size(937, 471);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
+            // 
+            // ReaderMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 575);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "ReaderMainForm";
             this.Text = "BranchStoryReader";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -84,9 +129,12 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem loadXMLToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reloadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadNewXMLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startOverToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem respawnImageWindowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeVariablesToolStripMenuItem;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
