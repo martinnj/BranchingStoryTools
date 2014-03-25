@@ -22,7 +22,7 @@ using System.Collections;
 
 namespace BSTParser
 {
-    class Story
+    public class Story
     {
         /// <summary>
         /// Variable that holds the path where the story was loaded from.

@@ -22,5 +22,16 @@ namespace BSTParser
 {
     public class Parser
     {
+
+        /// <summary>
+        /// Loads a story from an XML file structured after the BST format.
+        /// </summary>
+        /// <param name="xmlFile">Path to the XML file.</param>
+        /// <returns>A Story instance with the files content.</returns>
+        public Story LoadStory(string xmlFile)
+        {
+            //FIXME: Actually load the XML. Please?
+            return new Story();
+        }
     }
 }

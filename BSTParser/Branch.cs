@@ -23,7 +23,7 @@ using System.Collections.Generic;
 
 namespace BSTParser
 {
-    class Branch
+    public class Branch
     {
         /// <summary>
         /// List of tuples that with the format: ("ImagePath","ImageLabel")
