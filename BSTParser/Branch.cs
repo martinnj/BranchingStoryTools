@@ -29,13 +29,52 @@ namespace BSTParser
     class Branch
     {
         /// <summary>
-        /// Ordered list with the paths to the images associated with this branch.
+        /// List of tuples that with the format: ("ImagePath","ImageLabel")
+        /// containing all the images associated with this branch/section.
         /// </summary>
-        public List<string> ImagePaths;
+        public List<Tuple<string, string>> Images;
 
         /// <summary>
-        /// Ordered list with the descriptions of the associated images.
+        /// List of tuples that with the format: ("ChoiceLabel","targetbranchID")
+        /// with all the choices for this branch.
         /// </summary>
-        public List<string> ImageLabels;
+        public List<Tuple<string, string>> Choices;
+
+        /// <summary>
+        /// Text shown in this section.
+        /// </summary>
+        public string Text;
+
+        /// <summary>
+        /// Default constructor. Initializes lists as empty and Text as "".
+        /// </summary>
+        public Branch()
+        {
+            Images = new List<Tuple<string, string>>();
+            Choices = new List<Tuple<string, string>>();
+            Text = "";
+        }
+
+        /// <summary>
+        /// Convinience method to add an image.
+        /// </summary>
+        /// <param name="imagePath">Path to the image file.</param>
+        /// <param name="imageLabel">Label/description of the image.</param>
+        public void AddImage(string imagePath, string imageLabel)
+        {
+            Images.Add(new Tuple<string, string>(imagePath,imageLabel));
+            return;
+        }
+
+        /// <summary>
+        /// Convenience method to add a choice.
+        /// </summary>
+        /// <param name="choiceLabel">Label for the choice.</param>
+        /// <param name="targetBranchId">The ID of the branch this choice leeds to.</param>
+        public void AddChoice(string choiceLabel, string targetBranchId)
+        {
+            Images.Add(new Tuple<string, string>(choiceLabel, targetBranchId));
+            return;
+        }
     }
 }
