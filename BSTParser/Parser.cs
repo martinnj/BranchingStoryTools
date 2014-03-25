@@ -148,7 +148,7 @@ namespace BSTParser
                 }
 
                 // Add it to the story.
-                if (branchNode.Attributes != null) story.Branches.Add(branchNode.Attributes.GetNamedItem("id"),branch);
+                if (branchNode.Attributes != null) story.Branches.Add(branchNode.Attributes.GetNamedItem("id").Value, branch);
             }
             return story;
         }
