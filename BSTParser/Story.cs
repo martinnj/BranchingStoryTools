@@ -18,12 +18,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BSTParser
 {
@@ -36,8 +31,35 @@ namespace BSTParser
         public string StoryPath;
 
         /// <summary>
+        /// The title of the story.
+        /// </summary>
+        public string Title;
+
+        /// <summary>
         /// Hashtable that contains the different branches, keyed on their ID.
         /// </summary>
         public Hashtable Branches;
+
+        /// <summary>
+        /// Variables in the story, keyed by the name, valued by XML inner value.
+        /// </summary>
+        public Hashtable Vars;
+
+        /// <summary>
+        /// The entry point of the story, corresponding to the story element in the XML format.
+        /// </summary>
+        public Branch Beginning;
+
+        /// <summary>
+        /// Default constructor, initilizes everything as empty.
+        /// </summary>
+        public Story()
+        {
+            StoryPath = "";
+            Title = "";
+            Branches = new Hashtable();
+            Vars = new Hashtable();
+            Beginning = new Branch();
+        }
     }
 }
