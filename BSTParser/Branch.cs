@@ -1,0 +1,41 @@
+﻿/* Class the represents a branch in the story, including text, imagepaths
+ * and choices.
+ * 
+ * Copyright (C) 2014  Martin Jørgensen, http://flanker.dk
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ */
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BSTParser
+{
+    class Branch
+    {
+        /// <summary>
+        /// Ordered list with the paths to the images associated with this branch.
+        /// </summary>
+        public List<string> ImagePaths;
+
+        /// <summary>
+        /// Ordered list with the descriptions of the associated images.
+        /// </summary>
+        public List<string> ImageLabels;
+    }
+}
