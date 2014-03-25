@@ -17,6 +17,9 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
+using System.Xml;
 
 namespace BSTParser
 {
@@ -28,10 +31,87 @@ namespace BSTParser
         /// </summary>
         /// <param name="xmlFile">Path to the XML file.</param>
         /// <returns>A Story instance with the files content.</returns>
-        public Story LoadStory(string xmlFile)
+        public static Story LoadStory(string xmlFile)
         {
-            //FIXME: Actually load the XML. Please?
-            return new Story();
+            if (!System.IO.File.Exists(xmlFile))
+            {
+                return new Story(); 
+            }
+
+            var doc = new XmlDocument();
+            var story = new Story();
+
+            // Load the xml file into and XmlDocument class.
+            doc.Load(xmlFile);
+
+            // Retrieve variables and add them to the Vars hashtable.
+            var vars = doc.GetElementsByTagName("var");
+            for (var i = 0; i < vars.Count; i++)
+            {
+                var xmlNode = vars.Item(i);
+                if (xmlNode == null) continue;
+                if (xmlNode.Attributes != null)
+                    story.Vars.Add(xmlNode.Attributes.Item(0).InnerText, xmlNode.InnerText);
+            }
+
+            // Get the story entry point.
+            var beginningNodes = doc.GetElementsByTagName("story");
+            var beginning = beginningNodes.Item(0); //Take item 0 since we only support one entry.
+            if (beginning != null)
+            {
+                // Read the title and add it to the Story instance.
+                if (beginning.Attributes != null)
+                {
+                    story.Title = beginning.Attributes.GetNamedItem("title").InnerText;
+                }
+
+                // Parse the branch info and add it to the Story instance.
+                var beginningBranch = new Branch();
+
+                // Images?
+                var imgs = beginning.SelectNodes("img");
+                if (imgs != null)
+                {
+                    for (var i = 0; i < imgs.Count; i++)
+                    {
+                        var xmlNode = imgs.Item(i);
+                        if (xmlNode == null) continue;
+                        if (xmlNode.Attributes != null)
+                            beginningBranch.AddImage(xmlNode.Attributes.GetNamedItem("file").InnerText,
+                                xmlNode.InnerText);
+                    }
+                }
+
+                // Text content
+                var text = beginning.SelectSingleNode("text");
+                if (text != null) beginningBranch.Text = text.InnerText;
+
+                // Choices
+                var choices = beginning.SelectNodes("choice");
+                if (choices != null)
+                {
+                    for (var i = 0; i < choices.Count; i++)
+                    {
+                        var choice = choices.Item(i);
+                        if (choice == null) continue;
+                        if (choice.Attributes != null)
+                            beginningBranch.AddChoice(choice.InnerText,
+                                choice.Attributes.GetNamedItem("target").InnerText);
+                    }
+                }
+
+
+                // Add it to the Story instance
+                story.Beginning = beginningBranch;
+            }
+
+            // Move on to the branches, basically same as above, but with and id attribute instead of title.
+            var branches = doc.GetElementsByTagName("branch");
+            for (var i = 0; i < branches.Count; i++)
+            {
+                // Parse each branch.
+            }
+            return story;
         }
     }
 }
