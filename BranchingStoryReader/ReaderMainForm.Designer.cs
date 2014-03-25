@@ -59,6 +59,7 @@
             this.loadNewXMLToolStripMenuItem.Name = "loadNewXMLToolStripMenuItem";
             this.loadNewXMLToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
             this.loadNewXMLToolStripMenuItem.Text = "Load New XML";
+            this.loadNewXMLToolStripMenuItem.Click += new System.EventHandler(this.loadNewXMLToolStripMenuItem_Click);
             // 
             // startOverToolStripMenuItem
             // 

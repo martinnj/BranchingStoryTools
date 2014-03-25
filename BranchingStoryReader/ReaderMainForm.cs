@@ -18,22 +18,38 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using BSTParser;
 
 namespace BranchingStoryReader
 {
     public partial class ReaderMainForm : Form
     {
+        /// <summary>
+        /// Holds the currently loaded story.
+        /// </summary>
+        private Story story;
+
         public ReaderMainForm()
         {
             InitializeComponent();
+        }
+
+        private void loadNewXMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var dialog = new OpenFileDialog
+            {
+                DefaultExt = ".xml",
+                CheckFileExists = true,
+                SupportMultiDottedExtensions = true,
+                Title = @"Select XML file to open",
+                InitialDirectory = Application.StartupPath
+            };
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                story = Parser.LoadStory(dialog.FileName);
+            }
         }
     }
 }

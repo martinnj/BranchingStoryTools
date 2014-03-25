@@ -80,6 +80,12 @@
   <ItemGroup>
     <Content Include="TestStory.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BSTParser\BSTParser.csproj">
+      <Project>{0097a62f-5985-4295-91e2-068ac143b120}</Project>
+      <Name>BSTParser</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
