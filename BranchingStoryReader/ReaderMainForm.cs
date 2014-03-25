@@ -18,6 +18,7 @@
  */
 
 using System;
+using System.Collections;
 using System.Windows.Forms;
 using BSTParser;
 
@@ -25,19 +26,27 @@ namespace BranchingStoryReader
 {
     public partial class ReaderMainForm : Form
     {
+        #region "Variables/properties"
         /// <summary>
         /// Holds the currently loaded story.
         /// </summary>
-        private Story story;
+        private Story _story;
 
+        /// <summary>
+        /// Open file dialog used for selecting XML files.
+        /// </summary>
+        private readonly OpenFileDialog _filedialog;
+
+        /// <summary>
+        /// Variable to hold the dialog that edits variables.
+        /// </summary>
+        private VariableDialog _variableDialog;
+
+        #endregion
         public ReaderMainForm()
         {
             InitializeComponent();
-        }
-
-        private void loadNewXMLToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var dialog = new OpenFileDialog
+            _filedialog = new OpenFileDialog
             {
                 DefaultExt = ".xml",
                 CheckFileExists = true,
@@ -45,12 +54,82 @@ namespace BranchingStoryReader
                 Title = @"Select XML file to open",
                 InitialDirectory = Application.StartupPath
             };
-
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                story = Parser.LoadStory(dialog.FileName);
-            }
-            MessageBox.Show("Done.");
         }
+
+        #region "Helper methods"
+
+        /// <summary>
+        /// Draws the branch on the form, spawns images and choices etc.
+        /// </summary>
+        /// <param name="branch">The branch to draw on the form.</param>
+        public void DrawBranch(Branch branch)
+        {
+            // First reset the controls.
+            flowLayoutPanel1.Controls.Clear();
+            richTextBox1.Clear();
+
+            // Read text
+            //TODO: replace variables!
+            richTextBox1.Text = branch.Text;
+
+            // Spawn Choices
+            foreach (var c in branch.Choices)
+            {
+                var b = new Button {Text = c.Item1, Name = c.Item2};
+                b.Click += MakeChoice;
+                flowLayoutPanel1.Controls.Add(b);
+            }
+
+            //TODO: Spawn images.
+        }
+
+        #endregion
+
+        #region "UI events and similar"
+        /// <summary>
+        /// Handles the event that a choice button was clicked.
+        /// </summary>
+        /// <param name="sender">The button that triggered the event.</param>
+        /// <param name="e">Parameters??</param>
+        void MakeChoice(Object sender, EventArgs e)
+        {
+            var b = (Button)sender;
+            var id = b.Name;
+            var branch = (Branch)_story.Branches[id];
+            DrawBranch(branch);
+        } 
+        private void loadNewXMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // If the dialog didn't end with ok/open, just jump out and do nothing.
+            if (_filedialog.ShowDialog() != DialogResult.OK) return;
+
+            // If a file was chosen, parse the story and append the path.
+            _story = Parser.LoadStory(_filedialog.FileName);
+            _story.StoryPath = _filedialog.FileName;
+            startOverToolStripMenuItem.Enabled = true;
+            respawnImageWindowToolStripMenuItem.Enabled = true;
+            changeVariablesToolStripMenuItem.Enabled = true;
+
+            DrawBranch(_story.Beginning);
+        }
+
+        private void changeVariablesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Create a new dialog with our current variables.
+            _variableDialog = new VariableDialog(_story.Vars);
+
+            // If the dialog didn't end with ok/open, just jump out and do nothing.
+            if (_variableDialog.ShowDialog() != DialogResult.OK) return;
+
+            // Loop over all the variables an update the Story instance.
+            foreach (DictionaryEntry v in _variableDialog.Vars)
+            {
+                _story.Vars[v.Key.ToString()] = v.Value.ToString();
+            }
+
+            //TODO: Redraw the current page.
+        }
+
+        #endregion
     }
 }
