@@ -17,4 +17,16 @@ So like every XML document we need the pesky standard header.
 <?xml version="1.0" encoding="utf-8" ?>
 ```
 
-The root element in the format is simply called ```XML <forest>```
+The root element in the format is simply called ```<forest> ... </forest>``` and have no properties,
+it's just there to let us enjoy the XML standard, and to provide a root in the XPATH. (Am I getting it
+right so far?) The only real obligatory element in the root is the ```<story> ... </story>``` element,
+which acts as an entry-point into the story, a place for the parser to start. The ```<story>``` element
+should have one attribute: ```title```. So an empty story with an entry point will look like this
+
+```XML
+<?xml version="1.0" encoding="utf-8" ?>
+<forest>
+  <story title="Documenting my stuff.">
+  </story>
+</forest>
+``` 
