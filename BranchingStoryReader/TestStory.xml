@@ -20,38 +20,38 @@
 -->
 <forest>
     <vars>
-        <var name="MainChar" default="Donatello" />
-        <var name="SideChar" default="Michaelangelo" />
-        <var name="Town" default="Ancient China" />
+        <var id="MainChar">Donatello</var>
+        <var id="SideChar">Michaelangelo</var>
+        <var id="Town">Ancient China</var>
     </vars>
 
     
     <story title="Turtles in China">
-        <img file="img/wall.jpg" />
+        <img file="img/wall.jpg">The great wall of China.</img>
         <text>
             The two turtles went for a walk in %Town. Suddenly %SideChar wanted
             a pizza.
         </text>
-        <choice text="Hell no!" branch="nopizza" />
-        <choice text="Great idea!" branch="muchpizza" />
+        <choice branch="nopizza">Hell no!</choice>
+        <choice branch="muchpizza">Great idea!</choice>
     </story>
 
     <branch id="nopizza">
-        <img file="img/sadturtle.jpg" />
+        <img file="img/sadturtle.jpg">A sad turtle face.</img>
         <text>
             %MainChar slapped %SideChar and asked him to focus on the mission at hand.
             It would be hard enough without them waddling around full of pizza.
         </text>
-        <choice text="Lets go!" target="segway"/>
+        <choice target="segway">Lets go!</choice>
     </branch>
 
     <branch id="muchpizza">
-        <img file="img/happyturtle.jpg" />
-        <img file="img/deliciuspizza.jpg" />
+        <img file="img/happyturtle.jpg">A happy turtle.</img>
+        <img file="img/deliciuspizza.jpg">The pizza the happy turtly is enjoying.</img>
         <text>
             Agreeing, %MainChar sniffed up the closest pizza joint and set about eating with his friend.
         </text>
-        <choice text="Now lets go!" target="segway"/>
+        <choice target="segway">Now lets go!</choice>
     </branch>
 
     <branch id="segway">
