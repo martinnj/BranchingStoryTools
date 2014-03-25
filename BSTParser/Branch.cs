@@ -70,7 +70,7 @@ namespace BSTParser
         /// <param name="targetBranchId">The ID of the branch this choice leeds to.</param>
         public void AddChoice(string choiceLabel, string targetBranchId)
         {
-            Images.Add(new Tuple<string, string>(choiceLabel, targetBranchId));
+            Choices.Add(new Tuple<string, string>(choiceLabel, targetBranchId));
             return;
         }
     }
