@@ -47,8 +47,8 @@ the example!
             So whatever text we want to make someone read goes on here.
             Imagine that this text gave you a choice on how to proceed, please.
         </text>
-        <choice branch="nope">Absolutely not</choice>
-        <choice branch="hellyeah">Sure can do!</choice>
+        <choice target="nope">Absolutely not</choice>
+        <choice target="hellyeah">Sure can do!</choice>
     </story>
 </forest>
 ```
@@ -70,8 +70,8 @@ can look like so
             So whatever text we want to make someone read goes on here.
             Imagine that this text gave you a choice on how to proceed, please.
         </text>
-        <choice branch="nope">Absolutely not</choice>
-        <choice branch="hellyeah">Sure can do!</choice>
+        <choice target="nope">Absolutely not</choice>
+        <choice target="hellyeah">Sure can do!</choice>
     </story>
 
     <branch id="nope">
