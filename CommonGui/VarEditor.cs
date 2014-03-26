@@ -22,5 +22,10 @@ namespace CommonGui
             Varname = label;
             VarValue = value;
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            VarValue = textBox1.Text;
+        }
     }
 }
