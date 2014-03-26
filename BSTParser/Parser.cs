@@ -18,6 +18,7 @@
  */
 
 using System.Globalization;
+using System.IO;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Xml;
@@ -41,7 +42,7 @@ namespace BSTParser
 
             var doc = new XmlDocument();
             var story = new Story();
-
+            var path = Path.GetDirectoryName(xmlFile);
             // Load the xml file into and XmlDocument class.
             doc.Load(xmlFile);
 
@@ -78,7 +79,7 @@ namespace BSTParser
                         var xmlNode = imgs.Item(i);
                         if (xmlNode == null) continue;
                         if (xmlNode.Attributes != null)
-                            beginningBranch.AddImage(xmlNode.Attributes.GetNamedItem("file").InnerText,
+                            beginningBranch.AddImage(path + "\\" + xmlNode.Attributes.GetNamedItem("file").InnerText,
                                 xmlNode.InnerText);
                     }
                 }
@@ -124,7 +125,7 @@ namespace BSTParser
                         var xmlNode = imgs.Item(j);
                         if (xmlNode == null) continue;
                         if (xmlNode.Attributes != null)
-                            branch.AddImage(xmlNode.Attributes.GetNamedItem("file").InnerText,
+                            branch.AddImage(path + "\\" + xmlNode.Attributes.GetNamedItem("file").InnerText,
                                 xmlNode.InnerText);
                     }
                 }
