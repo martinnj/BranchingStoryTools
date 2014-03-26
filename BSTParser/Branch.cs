@@ -26,7 +26,7 @@ namespace BSTParser
     public class Branch
     {
         /// <summary>
-        /// List of tuples that with the format: ("ImagePath","ImageLabel")
+        /// List of tuples that with the format: ("ImagePath","label/description")
         /// containing all the images associated with this branch/section.
         /// </summary>
         public List<Tuple<string, string>> Images;
