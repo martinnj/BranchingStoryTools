@@ -53,8 +53,8 @@ the example!
 </forest>
 ```
 
-So lets start with the ```<img>``` element, it have a single attribute, which is the relative file to the image we
-want to associate with the text, and an innervalue containing an optional description of the image.
+So lets start with the ```<img>``` element, it have a single attribute, which is the relative path to the image we
+want to associate with the text, and an innervalue containing an optional description of the image (can contain variables, see below).
 The ```<text>``` element have no attributes and the inner value is simply the text for this section of the story.
 The ```<choice>``` element have a single attribute, which is the ID of the branch it should proceed to (I'll come to
 this in a minute, trust me) and an innervalue that is a labeltext for the choice (used for a button or something).

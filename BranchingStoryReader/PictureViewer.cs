@@ -21,17 +21,18 @@ namespace BranchingStoryReader
 
         private void PictureBox_Load(object sender, EventArgs e)
         {
-            /*foreach (var path in Images.Select(t => t.Item1))
-            {
-                _images.Add(new Bitmap(path));
-            }*/
             PopulateFlow();
-            if (Images.Count > 0) pictureBox1.Image = new Bitmap(Images[0].Item1);
+            if (Images.Count <= 0) return;
+            pictureBox1.Image = new Bitmap(Images[0].Item1);
+            label1.Text = Images[0].Item2;
         }
 
         private void ChangePicture(object sender, EventArgs e)
         {
-            pictureBox1.Image = ((PictureBox) sender).Image;
+            var pb = (PictureBox) sender;
+            pictureBox1.Image = pb.Image;
+            var t = Images.Find(i => i.Item1 == pb.Name);
+            label1.Text = t.Item2;
         }
 
         private void PopulateFlow()
