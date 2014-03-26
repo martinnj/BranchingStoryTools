@@ -1,6 +1,6 @@
 ﻿namespace BranchingStoryReader
 {
-    partial class PictureBox
+    partial class PictureViewer
     {
         /// <summary>
         /// Required designer variable.
@@ -35,6 +35,7 @@
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 530);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -51,15 +52,16 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // PictureBox
+            // PictureViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(854, 630);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Name = "PictureBox";
+            this.Name = "PictureViewer";
             this.Text = "Image Viewer";
+            this.Load += new System.EventHandler(this.PictureBox_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

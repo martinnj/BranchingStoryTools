@@ -36,6 +36,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.delmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -49,7 +50,8 @@
             this.loadNewXMLToolStripMenuItem,
             this.startOverToolStripMenuItem,
             this.respawnImageWindowToolStripMenuItem,
-            this.changeVariablesToolStripMenuItem});
+            this.changeVariablesToolStripMenuItem,
+            this.delmeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(937, 24);
@@ -77,6 +79,7 @@
             this.respawnImageWindowToolStripMenuItem.Name = "respawnImageWindowToolStripMenuItem";
             this.respawnImageWindowToolStripMenuItem.Size = new System.Drawing.Size(146, 20);
             this.respawnImageWindowToolStripMenuItem.Text = "Respawn ImageWindow";
+            this.respawnImageWindowToolStripMenuItem.Click += new System.EventHandler(this.respawnImageWindowToolStripMenuItem_Click);
             // 
             // changeVariablesToolStripMenuItem
             // 
@@ -154,6 +157,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.ToolStripMenuItem delmeToolStripMenuItem;
     }
 }
 

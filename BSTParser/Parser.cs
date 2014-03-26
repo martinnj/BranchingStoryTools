@@ -17,10 +17,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-using System.Globalization;
 using System.IO;
-using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 using System.Xml;
 
 namespace BSTParser

@@ -18,7 +18,6 @@
  */
 
 using System;
-using System.Collections;
 using System.Windows.Forms;
 using BSTParser;
 
@@ -47,6 +46,11 @@ namespace BranchingStoryReader
         /// </summary>
         private VariableDialog _variableDialog;
 
+        /// <summary>
+        /// Variable to hold the imageviewer.
+        /// </summary>
+        private PictureViewer _pictureViewer;
+
         #endregion
         public ReaderMainForm()
         {
@@ -73,7 +77,7 @@ namespace BranchingStoryReader
             flowLayoutPanel1.Controls.Clear();
             richTextBox1.Clear();
 
-            // Read text
+            // Read text and place variables
             var ltext = branch.Text;
             foreach (var key in _story.Vars.Keys)
             {
@@ -89,7 +93,30 @@ namespace BranchingStoryReader
                 flowLayoutPanel1.Controls.Add(b);
             }
 
-            //TODO: Spawn images.
+            // Spawn image viewer
+            // Replace variables in descriptions.
+            foreach (var key in _story.Vars.Keys)
+            {
+                foreach (var pair in branch.Images)
+                {
+                    var desc = pair.Item2;
+                    desc = desc.Replace(string.Format("%{0}", key), (string)_story.Vars[key]);
+                }
+            }
+
+            // Get the images to the form.
+            var loca = new System.Drawing.Point();
+            var size = new System.Drawing.Size(400,400);
+            if (_pictureViewer != null)
+            {
+                loca = _pictureViewer.Location;
+                size = _pictureViewer.Size;
+                _pictureViewer.Close();
+            }
+            _pictureViewer = new PictureViewer(branch.Images) { StartPosition = FormStartPosition.Manual,
+                                                                Location = loca,
+                                                                Size = size};
+            _pictureViewer.Show();
         }
 
         #endregion
@@ -105,7 +132,8 @@ namespace BranchingStoryReader
             var b = (Button)sender;
             var id = b.Name;
             var branch = (Branch)_story.Branches[id];
-            DrawBranch(branch);
+            _branch = branch;
+            DrawBranch(_branch);
         } 
         private void loadNewXMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -118,8 +146,36 @@ namespace BranchingStoryReader
             startOverToolStripMenuItem.Enabled = true;
             respawnImageWindowToolStripMenuItem.Enabled = true;
             changeVariablesToolStripMenuItem.Enabled = true;
+            _branch = _story.Beginning;
+            DrawBranch(_branch);
+        }
 
-            DrawBranch(_story.Beginning);
+
+        private void startOverToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _branch = _story.Beginning;
+            DrawBranch(_branch);
+        }
+
+
+        private void respawnImageWindowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Get the images to the form.
+            var loca = new System.Drawing.Point();
+            var size = new System.Drawing.Size(400, 400);
+            if (_pictureViewer != null)
+            {
+                loca = _pictureViewer.Location;
+                size = _pictureViewer.Size;
+                _pictureViewer.Close();
+            }
+            _pictureViewer = new PictureViewer(_branch.Images)
+            {
+                StartPosition = FormStartPosition.Manual,
+                Location = loca,
+                Size = size
+            };
+            _pictureViewer.Show();
         }
 
         private void changeVariablesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -136,13 +192,8 @@ namespace BranchingStoryReader
             // Refresh the current page
             DrawBranch(_branch);
         }
-
-
-        private void startOverToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DrawBranch(_story.Beginning);
-        }
         #endregion
+
 
     }
 }
