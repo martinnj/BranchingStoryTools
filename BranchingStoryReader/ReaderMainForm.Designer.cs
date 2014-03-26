@@ -69,6 +69,7 @@
             this.startOverToolStripMenuItem.Name = "startOverToolStripMenuItem";
             this.startOverToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.startOverToolStripMenuItem.Text = "Start Over";
+            this.startOverToolStripMenuItem.Click += new System.EventHandler(this.startOverToolStripMenuItem_Click);
             // 
             // respawnImageWindowToolStripMenuItem
             // 

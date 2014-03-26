@@ -33,6 +33,11 @@ namespace BranchingStoryReader
         private Story _story;
 
         /// <summary>
+        /// Currently loaded branch, used for redrawing a page on variable change.
+        /// </summary>
+        private Branch _branch;
+
+        /// <summary>
         /// Open file dialog used for selecting XML files.
         /// </summary>
         private readonly OpenFileDialog _filedialog;
@@ -69,8 +74,12 @@ namespace BranchingStoryReader
             richTextBox1.Clear();
 
             // Read text
-            //TODO: replace variables!
-            richTextBox1.Text = branch.Text;
+            var ltext = branch.Text;
+            foreach (var key in _story.Vars.Keys)
+            {
+                ltext = ltext.Replace(string.Format("%{0}", key), (string) _story.Vars[key]);
+            }
+            richTextBox1.Text = ltext;
 
             // Spawn Choices
             foreach (var c in branch.Choices)
@@ -122,14 +131,18 @@ namespace BranchingStoryReader
             if (_variableDialog.ShowDialog() != DialogResult.OK) return;
 
             // Loop over all the variables an update the Story instance.
-            foreach (DictionaryEntry v in _variableDialog.Vars)
-            {
-                _story.Vars[v.Key.ToString()] = v.Value.ToString();
-            }
+            _story.Vars = _variableDialog.Vars;
 
-            //TODO: Redraw the current page.
+            // Refresh the current page
+            DrawBranch(_branch);
         }
 
+
+        private void startOverToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DrawBranch(_story.Beginning);
+        }
         #endregion
+
     }
 }
