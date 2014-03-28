@@ -171,4 +171,4 @@ be marked witth ```%VarId```. Above I used variables for the main person, the si
 This should be sufficient to allow me to remember the format I wanted to implement, and hopefully any (though I doubt
 there will be any) readers will have gotten the gist too.
 
-The last example is also found in [BranchingStoryReader/TestStory.xml](BranchingStoryReader/TestStory.xml).
+The last example is also found in [TestStory.xml](TestStory.xml).
