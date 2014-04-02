@@ -25,9 +25,16 @@
         <var id="Place">Ancient China</var>
     </vars>
 
+    <images>
+        <imgres id="wall"  file="img/wall.jpg">The great wall of China.</imgres>
+        <imgres id="sad"   file="img/sadturtle.jpg">A sad turtle face.</imgres>
+        <imgres id="happy" file="img/happyturtle.jpg">A happy turtle.</imgres>
+        <imgres id="pizza" file="img/deliciuspizza.jpg">The pizza the happy turtly is enjoying.</imgres>
+    </images>
+
     
     <story title="Turtles in China">
-        <img file="img/wall.jpg">The great wall of China.</img>
+        <img>wall</img>
         <text>
             The two turtles went for a walk in %Place. Suddenly %SideChar wanted
             a pizza.
@@ -37,7 +44,7 @@
     </story>
 
     <branch id="nopizza">
-        <img file="img/sadturtle.jpg">A sad turtle face.</img>
+        <img>sad</img>
         <text>
             %MainChar slapped %SideChar and asked him to focus on the mission at hand.
             It would be hard enough without them waddling around full of pizza.
@@ -46,8 +53,8 @@
     </branch>
 
     <branch id="muchpizza">
-        <img file="img/happyturtle.jpg">A happy turtle.</img>
-        <img file="img/deliciuspizza.jpg">The pizza the happy turtly is enjoying.</img>
+        <img>happy</img>
+        <img>pizza</img>
         <text>
             Agreeing, %MainChar sniffed up the closest pizza joint and set about eating with his friend.
         </text>

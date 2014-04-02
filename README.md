@@ -7,6 +7,8 @@ Don't want to put too much crappy code in the FEngine project. :)
 Martins BST/XML Format
 -----------------------
 
+OBS: The image handling is undergoing an overhaul and will be changed asap.
+
 So I'll try to document the XML format, I don't expect anyone to use it, but it's good practice for me,
 and it might prevent me from forgetting it, and maybe learn how to use markdown. Sounds good enough for me.
 So lets get started!
