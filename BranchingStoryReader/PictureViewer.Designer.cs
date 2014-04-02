@@ -31,8 +31,8 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -67,6 +67,15 @@
             this.panel1.Size = new System.Drawing.Size(854, 530);
             this.panel1.TabIndex = 2;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 501);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(854, 29);
+            this.panel2.TabIndex = 3;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -77,15 +86,6 @@
             this.label1.Size = new System.Drawing.Size(46, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "label1";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 501);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(854, 29);
-            this.panel2.TabIndex = 3;
             // 
             // PictureViewer
             // 

@@ -29,7 +29,7 @@ namespace BSTParser
         /// List of tuples that with the format: ("ImagePath","label/description")
         /// containing all the images associated with this branch/section.
         /// </summary>
-        public List<Tuple<string, string>> Images;
+        public List<string> Images;
 
         /// <summary>
         /// List of tuples that with the format: ("ChoiceLabel","targetbranchID")
@@ -47,7 +47,7 @@ namespace BSTParser
         /// </summary>
         public Branch()
         {
-            Images = new List<Tuple<string, string>>();
+            Images = new List<string>();
             Choices = new List<Tuple<string, string>>();
             Text = "";
         }
@@ -57,11 +57,11 @@ namespace BSTParser
         /// </summary>
         /// <param name="imagePath">Path to the image file.</param>
         /// <param name="imageLabel">Label/description of the image.</param>
-        public void AddImage(string imagePath, string imageLabel)
-        {
-            Images.Add(new Tuple<string, string>(imagePath,imageLabel));
-            return;
-        }
+        //public void AddImage(string imagePath, string imageLabel)
+        //{
+        //    Images.Add(new Tuple<string, string>(imagePath,imageLabel));
+        //    return;
+        //}
 
         /// <summary>
         /// Convenience method to add a choice.

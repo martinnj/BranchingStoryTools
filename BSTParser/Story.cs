@@ -46,6 +46,11 @@ namespace BSTParser
         public Hashtable Vars;
 
         /// <summary>
+        /// Hashtable resolving image ID's to tuples (filename, description).
+        /// </summary>
+        public Hashtable Images;
+
+        /// <summary>
         /// The entry point of the story, corresponding to the story element in the XML format.
         /// </summary>
         public Branch Beginning;
@@ -59,6 +64,7 @@ namespace BSTParser
             Title = "";
             Branches = new Hashtable();
             Vars = new Hashtable();
+            Images = new Hashtable();
             Beginning = new Branch();
         }
     }

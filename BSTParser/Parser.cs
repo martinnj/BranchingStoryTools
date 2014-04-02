@@ -17,6 +17,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+using System;
 using System.IO;
 using System.Xml;
 
@@ -53,6 +54,23 @@ namespace BSTParser
                     story.Vars.Add(xmlNode.Attributes.Item(0).InnerText, xmlNode.InnerText);
             }
 
+            // Gather images into the hashtable
+            var imgres = doc.GetElementsByTagName("imgres");
+            for (var i = 0 ; i < imgres.Count; i++)
+            {
+                var img = imgres.Item(i);
+                if (img != null)
+                    story.Images.Add(img.Attributes.GetNamedItem("id").InnerText, new Tuple<string, string>(img.Attributes.GetNamedItem("file").InnerText, img.InnerText));
+            }
+
+            /*for (var i = 0; i < imgres.Count; i++)
+            {
+                var xmlNode = imgres.Item(i);
+                if (xmlNode == null) continue;
+                if (xmlNode.Attributes != null)
+                    story.Images.Add(xmlNode.Attributes.GetNamedItem("id").InnerText, new Tuple<string,string>(xmlNode.Attributes.GetNamedItem("file").InnerText, xmlNode.InnerText));
+            }*/
+
             // Get the story entry point.
             var beginningNodes = doc.GetElementsByTagName("story");
             var beginning = beginningNodes.Item(0); //Take item 0 since we only support one entry.
@@ -76,8 +94,7 @@ namespace BSTParser
                         var xmlNode = imgs.Item(i);
                         if (xmlNode == null) continue;
                         if (xmlNode.Attributes != null)
-                            beginningBranch.AddImage(path + "\\" + xmlNode.Attributes.GetNamedItem("file").InnerText,
-                                xmlNode.InnerText);
+                            beginningBranch.Images.Add(xmlNode.InnerText);
                     }
                 }
 
@@ -122,8 +139,7 @@ namespace BSTParser
                         var xmlNode = imgs.Item(j);
                         if (xmlNode == null) continue;
                         if (xmlNode.Attributes != null)
-                            branch.AddImage(path + "\\" + xmlNode.Attributes.GetNamedItem("file").InnerText,
-                                xmlNode.InnerText);
+                            branch.Images.Add(xmlNode.InnerText);
                     }
                 }
 

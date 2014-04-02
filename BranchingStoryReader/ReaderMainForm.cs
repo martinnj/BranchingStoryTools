@@ -18,6 +18,7 @@
  */
 
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using BSTParser;
 
@@ -95,13 +96,11 @@ namespace BranchingStoryReader
 
             // Spawn image viewer
             // Replace variables in descriptions.
-            foreach (var key in _story.Vars.Keys)
+            // FIXME
+            var imgs = new List<Tuple<string, string>>();
+            foreach (var id in branch.Images)
             {
-                foreach (var pair in branch.Images)
-                {
-                    var desc = pair.Item2;
-                    desc = desc.Replace(string.Format("%{0}", key), (string)_story.Vars[key]);
-                }
+                imgs.Add((Tuple<string,string>)_story.Images[id]);
             }
 
             // Get the images to the form.
@@ -113,9 +112,12 @@ namespace BranchingStoryReader
                 size = _pictureViewer.Size;
                 _pictureViewer.Close();
             }
-            _pictureViewer = new PictureViewer(branch.Images) { StartPosition = FormStartPosition.Manual,
-                                                                Location = loca,
-                                                                Size = size};
+            _pictureViewer = new PictureViewer(imgs, _story.StoryPath)
+            {
+                StartPosition = FormStartPosition.Manual,
+                Location = loca,
+                Size = size
+            };
             _pictureViewer.Show();
         }
 
@@ -169,7 +171,14 @@ namespace BranchingStoryReader
                 size = _pictureViewer.Size;
                 _pictureViewer.Close();
             }
-            _pictureViewer = new PictureViewer(_branch.Images)
+            // Replace variables in descriptions.
+            // FIXME
+            var imgs = new List<Tuple<string, string>>();
+            foreach (var id in _branch.Images)
+            {
+                imgs.Add((Tuple<string, string>)_story.Images[id]);
+            }
+            _pictureViewer = new PictureViewer(imgs, _story.StoryPath)
             {
                 StartPosition = FormStartPosition.Manual,
                 Location = loca,
