@@ -89,7 +89,7 @@ namespace BranchingStoryReader
             // Spawn Choices
             foreach (var c in branch.Choices)
             {
-                var b = new Button {Text = c.Item1, Name = c.Item2};
+                var b = new Button {Text = c.Item1, Name = c.Item2, AutoSize = true};
                 b.Click += MakeChoice;
                 flowLayoutPanel1.Controls.Add(b);
             }

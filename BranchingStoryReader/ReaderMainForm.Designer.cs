@@ -33,10 +33,10 @@
             this.startOverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.respawnImageWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeVariablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.delmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.delmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -89,6 +89,11 @@
             this.changeVariablesToolStripMenuItem.Text = "Change Variables";
             this.changeVariablesToolStripMenuItem.Click += new System.EventHandler(this.changeVariablesToolStripMenuItem_Click);
             // 
+            // delmeToolStripMenuItem
+            // 
+            this.delmeToolStripMenuItem.Name = "delmeToolStripMenuItem";
+            this.delmeToolStripMenuItem.Size = new System.Drawing.Size(12, 20);
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -110,6 +115,7 @@
             // richTextBox1
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
