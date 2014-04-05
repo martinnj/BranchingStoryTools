@@ -89,18 +89,27 @@ namespace BranchingStoryReader
             // Spawn Choices
             foreach (var c in branch.Choices)
             {
-                var b = new Button {Text = c.Item1, Name = c.Item2, AutoSize = true};
+                var c2 = c;
+                foreach (var key in _story.Vars.Keys)
+                {
+                    c2 = new Tuple<string, string>(c2.Item1.Replace(string.Format("%{0}", key), (string)_story.Vars[key]), c2.Item2);
+                }
+                var b = new Button {Text = c2.Item1, Name = c2.Item2, AutoSize = true};
                 b.Click += MakeChoice;
                 flowLayoutPanel1.Controls.Add(b);
             }
 
             // Spawn image viewer
             // Replace variables in descriptions.
-            // FIXME
             var imgs = new List<Tuple<string, string>>();
             foreach (var id in branch.Images)
             {
-                imgs.Add((Tuple<string,string>)_story.Images[id]);
+                var t = (Tuple<string, string>) _story.Images[id];
+                foreach (var key in _story.Vars.Keys)
+                {
+                    t = new Tuple<string, string>(t.Item1, t.Item2.Replace(string.Format("%{0}", key), (string)_story.Vars[key]));
+                }
+                imgs.Add(t);
             }
 
             // Get the images to the form.
